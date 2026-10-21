@@ -12,10 +12,8 @@ A simple tool to remap your Steelseries Aerox 9 mouse.
 
 ## Installing
 
-**Windows:** run `Opensteel_x.y.z_x64-setup.exe`.
-
-**macOS (13 or later):** unzip and drag Opensteel to Applications. Allow *Input
-Monitoring* when asked; it's how the app sees which button you pressed.
+**macOS (13 or later):** allow *Input Monitoring* when asked; it's how the app sees
+which button you pressed.
 
 **Linux:** install the `.deb` or `.rpm`, which also installs a udev rule so the app can
 reach the mouse. The AppImage runs anywhere but can't install that rule; add it yourself
