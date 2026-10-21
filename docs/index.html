@@ -92,11 +92,8 @@
         <li>Works over USB, the 2.4 GHz dongle and Bluetooth.</li>
       </ul>
 
-      <h2>First launch</h2>
-      <ul>
-        <li><strong>macOS:</strong> allow <em>Input Monitoring</em> when asked, so it can show which button you pressed.</li>
-        <li><strong>Linux:</strong> the .deb and .rpm install a udev rule so the app can reach the mouse. For the AppImage, add it once:</li>
-      </ul>
+      <h2>Linux AppImage</h2>
+      <p>Run this once so the AppImage can reach the mouse (the .deb and .rpm do it for you):</p>
       <pre>sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/Opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
 sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger --subsystem-match=hidraw</pre>
     </section>
