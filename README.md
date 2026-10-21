@@ -1,4 +1,4 @@
-# Opensteel
+# opensteel
 
 A simple tool to remap your Steelseries Aerox 9 mouse.
 
