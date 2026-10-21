@@ -6,7 +6,7 @@ A simple tool to remap your Steelseries Aerox 9 mouse.
 
 **[Download for Windows, macOS or Linux](https://jetsmoke.github.io/Opensteel/)**
 
-- Remap the 12 side buttons, the wheel and the top button.
+- Remap every button.
 - Settings are saved to the mouse, so they keep working with Opensteel closed.
 - Works over USB, the 2.4 GHz dongle and Bluetooth.
 
