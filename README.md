@@ -1,0 +1,54 @@
+# Opensteel
+
+A simple tool to remap your Steelseries Aerox 9 mouse.
+
+![Opensteel](docs/screenshot.png)
+
+**[Download for Windows, macOS or Linux](https://jetsmoke.github.io/Opensteel/)**
+
+- Remap the 12 side buttons, the wheel click, the top button and the scroll wheel.
+  Left and right click stay as they are.
+- One fixed DPI (100–18000) and the polling rate.
+- Lighting: off or colour cycle, plus a reactive flash in any colour on each click.
+- Everything is saved to the mouse itself, so it keeps working with Opensteel closed,
+  on any computer.
+- Works over the USB cable, the 2.4 GHz dongle and Bluetooth.
+- Press a button on the mouse and it lights up in the app instead of doing anything.
+
+## Installing
+
+**Windows:** run `Opensteel_x.y.z_x64-setup.exe`.
+
+**macOS (13 or later):** unzip and drag Opensteel to Applications. Allow *Input
+Monitoring* when asked; it's how the app sees which button you pressed.
+
+**Linux:** install the `.deb` or `.rpm`, which also installs a udev rule so the app can
+reach the mouse. The AppImage runs anywhere but can't install that rule; add it yourself
+once:
+
+```bash
+sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/Opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=hidraw
+```
+
+## Building
+
+- **macOS app** (`macos/`): Swift, SwiftUI and SceneKit, no Xcode project.
+  Run `macos/build.sh`.
+- **Windows and Linux app** (`desktop/`): [Tauri](https://tauri.app). Rust talks to the
+  mouse through hidapi; the window is the web page in `desktop/ui`. With Rust and the
+  [Tauri prerequisites](https://tauri.app/start/prerequisites/) installed, run
+  `cargo tauri build` in `desktop/src-tauri`.
+
+Pushing a tag like `v0.2.0` builds all three and publishes a GitHub release
+(`.github/workflows/release.yml`).
+
+## Credits
+
+- The button-mapping protocol was first worked out by the
+  [rivalcfg](https://github.com/flozz/rivalcfg) project.
+- The 3D mouse is "Steelseries Aerox 9" by [Scout339](https://www.printables.com/@Scout339)
+  ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)); see `model/`.
+
+Opensteel's own code is public domain ([Unlicense](LICENSE)). It isn't affiliated with
+SteelSeries.

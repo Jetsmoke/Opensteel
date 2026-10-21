@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Opensteel",
+  "version": "0.1.0",
+  "identifier": "local.opensteel",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Opensteel",
+        "width": 660,
+        "height": 820,
+        "resizable": false,
+        "maximizable": false,
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "A simple tool to remap your Steelseries Aerox 9 mouse",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.png",
+      "icons/icon.ico"
+    ],
+    "linux": {
+      "deb": {
+        "files": {
+          "/usr/lib/udev/rules.d/70-opensteel.rules": "linux/70-opensteel.rules"
+        },
+        "postInstallScript": "linux/postinst.sh"
+      },
+      "rpm": {
+        "files": {
+          "/usr/lib/udev/rules.d/70-opensteel.rules": "linux/70-opensteel.rules"
+        },
+        "postInstallScript": "linux/postinst.sh"
+      }
+    },
+    "publisher": "Opensteel",
+    "longDescription": "A simple tool to remap your Steelseries Aerox 9 mouse"
+  }
+}

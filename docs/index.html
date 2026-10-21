@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opensteel</title>
+  <meta name="description" content="A simple tool to remap your Steelseries Aerox 9 mouse">
+  <link rel="icon" href="icon.png">
+  <style>
+    :root {
+      --bg: #f5f5f7; --surface: #ffffff; --text: #1d1d1f; --secondary: #6e6e73;
+      --border: rgba(0, 0, 0, 0.1); --accent: #0a84ff; --accent-text: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #161617; --surface: #232325; --text: #f5f5f7; --secondary: #a1a1a6; --border: rgba(255, 255, 255, 0.12); }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 56px 16px 64px; }
+    header { text-align: center; }
+    header img.icon { width: 72px; height: 72px; }
+    h1 { font-size: 40px; margin: 8px 0 4px; letter-spacing: -0.02em; }
+    .tagline { color: var(--secondary); font-size: 19px; margin: 0; }
+    .shot { display: block; width: 100%; max-width: 560px; margin: 36px auto; border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25); }
+    .downloads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 640px) { .downloads { grid-template-columns: 1fr; } }
+    .platform {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .platform.mine { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .platform h2 { margin: 0; font-size: 18px; }
+    .platform .note { color: var(--secondary); font-size: 13px; margin: 0; }
+    .button {
+      display: block; text-align: center; padding: 9px 12px; border-radius: 8px; text-decoration: none;
+      background: var(--accent); color: var(--accent-text); font-weight: 600; font-size: 15px;
+    }
+    .button.secondary { background: transparent; color: var(--accent); border: 1px solid var(--border); font-weight: 500; }
+    .button[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+    .version { text-align: center; color: var(--secondary); font-size: 14px; margin: 14px 0 0; }
+    section.details { margin-top: 48px; }
+    section.details h2 { font-size: 20px; margin: 28px 0 8px; }
+    ul { padding-left: 20px; margin: 0; }
+    li { margin: 4px 0; }
+    code, pre { font-family: ui-monospace, "Cascadia Mono", Menlo, monospace; font-size: 13px; }
+    pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px;
+          overflow-x: auto; white-space: pre; }
+    a { color: var(--accent); }
+    footer { margin-top: 48px; color: var(--secondary); font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img class="icon" src="icon.png" alt="">
+      <h1>Opensteel</h1>
+      <p class="tagline">A simple tool to remap your Steelseries Aerox 9 mouse</p>
+    </header>
+
+    <img class="shot" src="screenshot.png" alt="Opensteel showing the Aerox 9's side buttons and their bindings">
+
+    <div class="downloads">
+      <div class="platform" data-os="windows">
+        <h2>Windows</h2>
+        <a class="button" data-asset="-setup.exe" aria-disabled="true" href="#">Download installer</a>
+        <a class="button secondary" data-asset=".msi" aria-disabled="true" href="#">.msi</a>
+        <p class="note">Windows 10 and 11, 64-bit.</p>
+      </div>
+      <div class="platform" data-os="mac">
+        <h2>macOS</h2>
+        <a class="button" data-asset="_macOS.zip" aria-disabled="true" href="#">Download</a>
+        <p class="note">macOS 13 or later, Apple silicon and Intel.</p>
+      </div>
+      <div class="platform" data-os="linux">
+        <h2>Linux</h2>
+        <a class="button" data-asset=".AppImage" aria-disabled="true" href="#">AppImage</a>
+        <a class="button secondary" data-asset=".deb" aria-disabled="true" href="#">.deb</a>
+        <a class="button secondary" data-asset=".rpm" aria-disabled="true" href="#">.rpm</a>
+        <p class="note">x86-64. The AppImage needs the udev rule below.</p>
+      </div>
+    </div>
+    <p class="version" id="version">Looking up the latest release…</p>
+
+    <section class="details">
+      <h2>What it does</h2>
+      <ul>
+        <li>Remap the 12 side buttons, the wheel click, the top button and the scroll wheel.</li>
+        <li>Set one fixed DPI (100–18000) and the polling rate.</li>
+        <li>Lighting off or colour cycle, plus a reactive flash in any colour on each click.</li>
+        <li>Everything is saved to the mouse, so it keeps working with Opensteel closed.</li>
+        <li>Works over the USB cable, the 2.4 GHz dongle and Bluetooth.</li>
+      </ul>
+
+      <h2>First launch</h2>
+      <ul>
+        <li><strong>macOS:</strong> allow <em>Input Monitoring</em> when asked, so it can show which button you pressed.</li>
+        <li><strong>Linux:</strong> the .deb and .rpm install a udev rule so the app can reach the mouse. For the AppImage, add it once:</li>
+      </ul>
+      <pre>sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/Opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
+sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger --subsystem-match=hidraw</pre>
+    </section>
+
+    <footer>
+      <a href="https://github.com/Jetsmoke/Opensteel">Source on GitHub</a> · Public domain ·
+      3D mouse by <a href="https://www.printables.com/@Scout339">Scout339</a> (CC BY-SA 4.0) ·
+      Not affiliated with SteelSeries
+    </footer>
+  </main>
+
+  <script>
+    // Point each button at the matching file in the latest release, and highlight this OS.
+    const ua = navigator.userAgent;
+    const os = /Windows/.test(ua) ? "windows" : /Mac OS X|Macintosh/.test(ua) ? "mac" : /Linux|X11/.test(ua) ? "linux" : null;
+    if (os) document.querySelector(`.platform[data-os="${os}"]`).classList.add("mine");
+
+    fetch("https://api.github.com/repos/Jetsmoke/Opensteel/releases/latest")
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((release) => {
+        for (const link of document.querySelectorAll("[data-asset]")) {
+          const asset = release.assets.find((a) => a.name.endsWith(link.dataset.asset));
+          if (asset) { link.href = asset.browser_download_url; link.removeAttribute("aria-disabled"); }
+        }
+        document.getElementById("version").textContent = `Version ${release.tag_name.replace(/^v/, "")}`;
+      })
+      .catch(() => {
+        document.getElementById("version").innerHTML =
+          'Downloads are on the <a href="https://github.com/Jetsmoke/Opensteel/releases">releases page</a>.';
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.DS_Store
+*.app
+desktop/src-tauri/target/
+desktop/src-tauri/gen/
+# Copied in from model/ by desktop/src-tauri/build.rs.
+desktop/ui/assets/Aerox9.mesh

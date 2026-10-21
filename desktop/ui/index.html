@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opensteel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="top">
+      <h1>Opensteel <span class="subtitle">Aerox 9 Wireless</span></h1>
+      <div class="status">
+        <span id="battery" class="battery" hidden></span>
+        <span id="pill" class="pill"></span>
+      </div>
+    </header>
+
+    <div class="view3d"><canvas id="mouse3d"></canvas></div>
+
+    <section class="box"><div id="side-grid" class="grid"></div></section>
+
+    <section>
+      <h2>Top button &amp; wheel</h2>
+      <div class="box"><div id="main-grid" class="grid"></div></div>
+    </section>
+
+    <div class="pair">
+      <section>
+        <h2>Sensitivity</h2>
+        <div class="box"><div id="cpi-row" class="slider-row"></div></div>
+      </section>
+      <section>
+        <h2>Polling rate</h2>
+        <div class="box"><div id="polling-row" class="slider-row"></div></div>
+      </section>
+    </div>
+
+    <section>
+      <h2>Lighting</h2>
+      <div class="box lighting" id="lighting">
+        <span class="label">Lights</span>
+        <div class="segmented" role="radiogroup">
+          <button id="lights-off" role="radio">Off</button>
+          <button id="lights-cycle" role="radio">Colour cycle</button>
+        </div>
+        <label class="check" title="The lights flash this colour on each click."><input type="checkbox" id="flash"> Reactive</label>
+        <span id="flash-colour" class="flash-colour" hidden>
+          <input type="color" id="flash-picker" class="picker" title="Pick a colour"><span class="hash">#</span>
+          <input id="flash-hex" class="hex" maxlength="6" spellcheck="false" autocomplete="off">
+        </span>
+      </div>
+    </section>
+
+    <footer class="actions">
+      <button id="reset">Reset to Defaults</button>
+      <span id="message" class="message"></span>
+      <button id="write" class="primary"><span id="write-label">Write to Mouse</span></button>
+    </footer>
+  </main>
+
+  <div id="confirm" class="modal" hidden>
+    <div class="dialog" role="alertdialog" aria-labelledby="confirm-title">
+      <p id="confirm-title" class="dialog-title">Reset every button, DPI, polling rate and lighting to the defaults?</p>
+      <p class="dialog-body">Nothing changes on the mouse until you write.</p>
+      <div class="dialog-buttons">
+        <button id="confirm-cancel">Cancel</button>
+        <button id="confirm-reset" class="destructive">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Opensteel: lets the signed-in user talk to the SteelSeries Aerox 9 Wireless
+# over the cable (1038:185A, WOW edition 1876), the 2.4 GHz dongle (1858, 1874)
+# and Bluetooth (0111:185A).
+KERNEL=="hidraw*", KERNELS=="*:1038:185A.*", TAG+="uaccess"
+KERNEL=="hidraw*", KERNELS=="*:1038:1876.*", TAG+="uaccess"
+KERNEL=="hidraw*", KERNELS=="*:1038:1858.*", TAG+="uaccess"
+KERNEL=="hidraw*", KERNELS=="*:1038:1874.*", TAG+="uaccess"
+KERNEL=="hidraw*", KERNELS=="*:0111:185A.*", TAG+="uaccess"
