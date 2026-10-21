@@ -94,12 +94,12 @@
 
       <h2>Linux</h2>
       <p>Run this once so the AppImage can reach the mouse:</p>
-      <pre>sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/Opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
+      <pre>sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
 sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger --subsystem-match=hidraw</pre>
     </section>
 
     <footer>
-      <a href="https://github.com/Jetsmoke/Opensteel">Source on GitHub</a> · Public domain ·
+      <a href="https://github.com/Jetsmoke/opensteel">Source on GitHub</a> · Public domain ·
       3D mouse by <a href="https://www.printables.com/@Scout339">Scout339</a> (CC BY-SA 4.0) ·
       Not affiliated with SteelSeries
     </footer>
@@ -111,7 +111,7 @@ sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger --subsystem-
     const os = /Windows/.test(ua) ? "windows" : /Mac OS X|Macintosh/.test(ua) ? "mac" : /Linux|X11/.test(ua) ? "linux" : null;
     if (os) document.querySelector(`.platform[data-os="${os}"]`).classList.add("mine");
 
-    fetch("https://api.github.com/repos/Jetsmoke/Opensteel/releases/latest")
+    fetch("https://api.github.com/repos/Jetsmoke/opensteel/releases/latest")
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then((release) => {
         for (const link of document.querySelectorAll("[data-asset]")) {
@@ -122,7 +122,7 @@ sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger --subsystem-
       })
       .catch(() => {
         document.getElementById("version").innerHTML =
-          'Downloads are on the <a href="https://github.com/Jetsmoke/Opensteel/releases">releases page</a>.';
+          'Downloads are on the <a href="https://github.com/Jetsmoke/opensteel/releases">releases page</a>.';
       });
   </script>
 </body>

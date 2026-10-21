@@ -21,7 +21,7 @@ jobs:
           TAG: ${{ github.ref_name }}
         run: |
           gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --draft --title "Opensteel $TAG" \
-            --notes "A simple tool to remap your Steelseries Aerox 9 mouse. Installation notes: https://jetsmoke.github.io/Opensteel/"
+            --notes "A simple tool to remap your Steelseries Aerox 9 mouse. Installation notes: https://jetsmoke.github.io/opensteel/"
           echo "id=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json databaseId -q .databaseId)" >> "$GITHUB_OUTPUT"
 
   windows-linux:

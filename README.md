@@ -4,7 +4,7 @@ A simple tool to remap your Steelseries Aerox 9 mouse.
 
 ![Opensteel](docs/screenshot.png)
 
-**[Download for Windows, macOS or Linux](https://jetsmoke.github.io/Opensteel/)**
+**[Download for Windows, macOS or Linux](https://jetsmoke.github.io/opensteel/)**
 
 - Easily remap all keys and save them to memory
 - Works over USB, the 2.4 GHz dongle and Bluetooth.
@@ -14,7 +14,7 @@ A simple tool to remap your Steelseries Aerox 9 mouse.
 Run this once so the AppImage can reach the mouse:
 
 ```bash
-sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/Opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
+sudo curl -Lo /etc/udev/rules.d/70-opensteel.rules https://raw.githubusercontent.com/Jetsmoke/opensteel/main/desktop/src-tauri/linux/70-opensteel.rules
 sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=hidraw
 ```
 
